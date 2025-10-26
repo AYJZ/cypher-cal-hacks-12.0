@@ -53,6 +53,10 @@ Designing Cypher pushed us to think deeply about how humans learn, feel, and con
 We realized that the best learning experiences are not just smart but empathetic — meeting users where they are, adapting to their pace, and making every interaction feel human.
 
 
+## Demo
+
+https://youtu.be/5acGxu-PnMA 
+
 ## What's next for Cypher: Learn Languages Through Context
 
 Next, we’ll expand Cypher to support English, Japanese, and Spanish, add voice conversation mode, and refine our AI friend personalities for more natural dialogue.
