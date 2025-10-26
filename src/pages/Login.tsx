@@ -53,6 +53,9 @@ export default function Login() {
             <p className="text-muted-foreground text-sm">
               Sign in to save your progress and continue your journey.
             </p>
+            <p className="text-muted-foreground text-xs italic">
+              Please continue as guest for quick demo.
+            </p>
           </div>
 
           {/* Buttons */}

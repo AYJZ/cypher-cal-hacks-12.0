@@ -202,6 +202,11 @@ const Onboarding = () => {
             <p className="text-muted-foreground font-light">
               {getStepSubtitle()}
             </p>
+            {step === 2 && (
+              <p className="text-xs text-muted-foreground italic mt-2">
+                We are only supporting Chinese for demo
+              </p>
+            )}
           </div>
 
           {step === 1 && (
