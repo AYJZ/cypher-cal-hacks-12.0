@@ -13,9 +13,9 @@ serve(async (req) => {
   try {
     const { messages, scenario, scenarioContext, friendPersonality, friendTraits, friendSpeakingStyle, friendName, friendBio, knowsUserName, userName } = await req.json();
     
-    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
-    if (!LOVABLE_API_KEY) {
-      throw new Error("LOVABLE_API_KEY is not configured");
+    const AI_API_KEY = Deno.env.get("AI_API_KEY");
+    if (!AI_API_KEY) {
+      throw new Error("AI_API_KEY is not configured");
     }
 
     console.log('Chat request:', { friendName, friendPersonality, knowsUserName, userName, messageCount: messages.length });
@@ -158,10 +158,10 @@ Keep segments as complete phrases when possible.`;
 
     console.log('Sending to AI with', normalizedMessages.length, 'messages in conversation history');
     
-    const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+    const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${LOVABLE_API_KEY}`,
+        Authorization: `Bearer ${AI_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -184,7 +184,7 @@ Keep segments as complete phrases when possible.`;
       }
       if (response.status === 402) {
         return new Response(
-          JSON.stringify({ error: "Payment required. Please add credits to your Lovable AI workspace." }),
+          JSON.stringify({ error: "Payment required. Please add credits to your AI workspace." }),
           { status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" } }
         );
       }
