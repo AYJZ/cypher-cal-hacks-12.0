@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Light Mode - Pure Black Text, Gradient Edges */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%; /* Pure black text */
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 200 100% 85%; /* Light blue */
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 340 100% 85%; /* Light pink */
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 95%;
+    --ring: 200 100% 85%;
+
+    --radius: 1.5rem;
+
+    --chat-user: 200 100% 85%;
+    --chat-ai: 0 0% 100%;
+    
+    /* Light Mode Gradients - Soft blue → pink → orange edges */
+    --gradient-edge: linear-gradient(135deg, #A8D8FF 0%, #FFC6E5 50%, #FFD6A5 100%);
+    --gradient-glow: linear-gradient(135deg, rgba(168, 216, 255, 0.3), rgba(255, 198, 229, 0.3), rgba(255, 214, 165, 0.3));
+    
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(168, 216, 255, 0.3);
+    
+    --shadow-soft: 0 4px 24px -4px rgba(0, 0, 0, 0.08);
+    --shadow-float: 0 8px 32px -8px rgba(0, 0, 0, 0.12);
+    --shadow-glow: 0 0 40px -10px rgba(168, 216, 255, 0.5);
+    --shadow-bevel: inset 0 1px 2px rgba(255, 255, 255, 0.8), 0 2px 6px rgba(0, 0, 0, 0.15);
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 0%;
+    --sidebar-primary: 200 100% 85%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 0%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 200 100% 85%;
+  }
+
+  .dark {
+    /* Dark Mode - Pure White Text, Neon Gradient Edges */
+    --background: 0 0% 7%; /* Deep charcoal */
+    --foreground: 0 0% 100%; /* Pure white text */
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 265 100% 60%; /* Deep blue-purple */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 330 100% 65%; /* Neon pink */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 265 100% 60%;
+
+    --chat-user: 265 100% 60%;
+    --chat-ai: 0 0% 12%;
+    
+    /* Dark Mode Gradients - Deep blue → purple → red edges */
+    --gradient-edge: linear-gradient(135deg, #3A0CA3 0%, #7209B7 50%, #F72585 100%);
+    --gradient-glow: linear-gradient(135deg, rgba(58, 12, 163, 0.4), rgba(114, 9, 183, 0.4), rgba(247, 37, 133, 0.4));
+    
+    --glass-bg: rgba(17, 17, 17, 0.85);
+    --glass-border: rgba(114, 9, 183, 0.3);
+
+    --shadow-soft: 0 4px 24px -4px rgba(0, 0, 0, 0.4);
+    --shadow-float: 0 8px 32px -8px rgba(0, 0, 0, 0.6);
+    --shadow-glow: 0 0 40px -10px rgba(114, 9, 183, 0.7);
+    --shadow-bevel: inset 0 1px 2px rgba(255, 255, 255, 0.1), 0 2px 6px rgba(0, 0, 0, 0.5);
+
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 265 100% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 265 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  /* Chinese text styling */
+  [lang="zh"], .chinese-text {
+    font-family: 'Noto Sans SC', 'PingFang SC', -apple-system, sans-serif;
+  }
+  
+  /* Glassmorphism utility */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+  }
+  
+  /* Gradient Edge Utility */
+  .gradient-edge {
+    position: relative;
+    border: 2px solid transparent;
+    background: var(--card);
+    background-clip: padding-box;
+  }
+  
+  .gradient-edge::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: var(--gradient-edge);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  
+  /* 3D Button with Bevel */
+  .btn-3d {
+    position: relative;
+    box-shadow: var(--shadow-bevel);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .btn-3d:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-bevel), var(--shadow-glow);
+  }
+  
+  .btn-3d::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--gradient-glow);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  
+  .btn-3d:hover::after {
+    opacity: 1;
+  }
+  
+  /* Smooth scrolling */
+  * {
+    scroll-behavior: smooth;
+  }
+}
